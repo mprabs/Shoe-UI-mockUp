@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <div class="nav">
+            <div class="left_icon">
+                <a onclick="showDoc()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+            </div>
+            <div class="right_icon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+        <hr />
+        <div id="title" class="title">
+            Shoes</div>
+        <div id="menus" class="menus">
+            <div class="menu">All</div>
+            <div class="menu">Adidas</div>
+            <div class="menu">Shikhar</div>
+            <div class="menu">Nike</div>
+            <div class="menu">All</div>
+            <div class="menu">Adidas</div>
+            <div class="menu">Shikhar</div>
+            <div class="menu">Nike</div>
+        </div>
+        <div class="preview" id="preview">
+            <div class="card" id="card-1" onclick="showModal(this.id)">
+                <div id="card-details" class="card-details">
+                    <b class="no-wrap">Nike</b><br />
+                    <span class="no-wrap">20 Rs.</span>
+                </div>
+                <img id="card-img" src="./show.png" alt="">
+            </div>
+
+            <div class="card" id="card-2" onclick="showModal(this.id)">
+                <div id="card-details" class="card-details">
+                    <b class="no-wrap">Nike</b><br />
+                    <span class="no-wrap">20 Rs.</span>
+                </div>
+                <img id="card-img" src="./show.png" alt="">
+            </div>
+
+            <div class="card" id="card-3" onclick="showModal(this.id)">
+                <div id="card-details" class="card-details">
+                    <b class="no-wrap">Nike</b><br />
+                    <span class="no-wrap">20 Rs.</span>
+                </div>
+                <img id="card-img" src="./show.png" alt="">
+            </div>
+
+            
+        </div>
+        <div id="menu_title" class="menu_name">
+            200 OPTIONS
+        </div>
+        <hr />
+        <div id="list" class="list">
+            <div class="item">
+                <img src="./show.png" alt="">
+                <div class="details">
+                    <div class="name">Nike</div>
+                    <div class="price">Rs. 20</div>
+                </div>
+            </div>
+            <hr />
+            <div class="item">
+                <img src="./show.png" alt="">
+                <div class="details">
+                    <div class="name">Nike</div>
+                    <div class="price">Rs. 20</div>
+                </div>
+            </div>
+            <hr />
+            <div class="item">
+                <img src="./show.png" alt="">
+                <div class="details">
+                    <div class="name">Nike</div>
+                    <div class="price">Rs. 20</div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <div id="focus-content" class="focus-content">
+            <div class="heading">
+                <b>Nike</b>
+                <span>Rs.24</span>
+            </div>
+            <div class="about">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, dolores est. Quia, cupiditate fuga aperiam molestias, doloribus et soluta dolore iure, ad nobis aspernatur unde?</p>
+            </div>
+            <div class="gallery">
+                <img src="./show.png" alt="">
+                <img src="./show.png" alt="">
+                <img src="./show.png" alt="">
+            </div>
+            <div class="shoe-grid">
+                <div class="title">Select Size</div>
+                <div class="size-gallery">
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                    <div class="size">Size 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const title = document.getElementById('title');
+    const menu_title = document.getElementById('menu_title');
+    const menus = document.getElementById('menus');
+    const list = document.getElementById('list');
+    const image = document.getElementById('card-img');
+    const details = document.getElementById('card-details');
+    const cards = ['card-1', 'card-2', 'card-3'];
+    var x = document.querySelectorAll('hr')
+
+    function showModal(id) {
+        window.id = id;
+        document.getElementById('preview').classList.add('box');
+        image.style.transform = 'scaleX(-1) rotate(0) translateX(0) translateY(0) scale(1.3)';
+        menus.style.display = title.style.display = list.style.display = menu_title.style.display ='none'
+        details.style.visibility = "hidden";
+        cards.forEach(item => {
+            if(item != id) {
+                document.getElementById(item).style.display = 'none';
+            }
+        })
+        x[0].style.opacity = 0;
+        document.getElementById('focus-content').style.display = 'block';
+    }
+
+    function showDoc() {
+        document.getElementById('preview').classList.remove('box');
+        image.style.transform = 'scaleX(-1) rotate(40deg) translateX(-70px) translateY(-20px)';
+        title.style.display = list.style.display = menu_title.style.display ='inline'
+        menus.style.display = "flex"
+        details.style.visibility = "visible";
+        cards.forEach(item => {
+            document.getElementById(item).style.display = 'block';
+        })
+        x[0].style.opacity = 0.2;
+        document.getElementById('focus-content').style.display = 'none';
+        document.getElementById(window.id).querySelector("img").style.transform = 'scaleX(-1) rotate(50deg) translateX(-70px) translateY(0px)';
+        window.id="";
+    }
+
+</script>
+<style>
+    .focus-content {
+        display: none;
+        padding: 20px;
+        margin-top: 180px;
+    }
+
+    .focus-content .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .focus-content .heading b {
+        font-size: 20px;
+    }
+
+    .focus-content .gallery {
+        display: flex;
+        overflow: hidden;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .focus-content .gallery img:hover {
+        border: 1px solid black;
+    }
+
+    .focus-content .gallery img {
+        border-radius: 20px;
+        border: 1px solid rgb(207, 203, 203);
+        padding: 10px;
+        width: 70px;
+        object-fit: contain;
+    }
+
+    .shoe-grid .title {
+        font-size: 14px;
+        margin-left: -20px ;
+    }
+
+    .size-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .size-gallery .size {
+        background-color: lavenderblush;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border: 1px solid blueviolet;
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;   
+    }
+
+    html {
+        background-color: rgb(0, 0, 0);
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
+
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        width: 330px;
+        height: 100vh;
+        overflow-y: scroll;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 10px;
+    }
+     .title {
+         padding: 10px 20px;
+         font-weight: bold;
+         padding-bottom: 0;
+         font-size: 20px;
+     }
+
+    .menus {
+        display: flex;
+        padding: 15px;
+        overflow-x: scroll;
+    }
+
+    .menus .menu {
+        margin-left: 5px;
+        background-color: rgb(214, 205, 205);
+        padding: 7px 20px;
+        font-size: 12px;
+        border-radius: 30px;
+        color: rgb(63, 62, 60);
+    }
+
+    .menus::-webkit-scrollbar, .preview::-webkit-scrollbar {
+        visibility: hidden;
+    }
+
+    .content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .preview {
+        display: flex;
+    }
+
+    .card {
+        height: 150px;
+        width: 150px;
+        margin: 0 30px;
+        padding: 20px 0;
+        border-radius: 30px;
+        background-color: coral;
+    }
+    .box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 500px;
+        background-color: coral;
+        clip-path: ellipse(65% 49% at 36% 0%);
+        z-index: -1;
+     }
+
+    .card-details {
+        padding: 10px 30px;
+    }
+
+    .card-details b {
+        font-size: 20px;
+    }
+
+    #card-1 img, #card-3 img, #card-2 img {
+        height: 200px;
+        width: 150px;
+        object-fit: contain;
+        transition: transform 0.9s linear;
+        transform-origin: inherit;
+        transform: scaleX(-1) rotate(40deg) translateX(-70px) translateY(-20px);
+    }
+
+    .menu_name {
+        margin-top: 10px;
+        padding: 0 20px;
+        opacity: 0.6;
+        font-size: 12px;
+    }
+
+    hr {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 10px;
+        opacity: 0.2;
+        text-align: center;
+    }
+
+    .list .item {
+        display: flex;
+        padding: 10px 30px;
+    }
+
+    .list .item img {
+        width: 100px;
+        flex: 0.4;
+        object-fit: contain;
+        transform: scaleX(-1);
+    }
+
+    .list .item .details {
+        flex: 0.6;
+        display: flex;
+        margin: 0 20px;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+    }
+    
+    .list .item .details .name {
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .list .item .details .price {
+        font-size: 12px;
+        opacity: 0.6;
+    }
+
+</style>
